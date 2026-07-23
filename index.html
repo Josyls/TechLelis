@@ -4,166 +4,214 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Techlelis | Criação de Sites e Consultoria Online</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
     <style>
-        /* Estilos Globais e Paleta de Cores */
         :root {
-            --bg-dark: #0F172A;
-            --card-bg: #1E293B;
-            --accent-green: #25D366;
-            --accent-green-hover: #1ebd59;
-            --text-light: #F8FAFC;
-            --text-muted: #94A3B8;
+            --bg-body: #0b0f19;
+            --bg-card: rgba(30, 41, 59, 0.7);
+            --border-card: rgba(255, 255, 255, 0.08);
+            --primary-blue: #38bdf8;
+            --whatsapp-green: #25D366;
+            --whatsapp-hover: #1eb855;
+            --text-main: #f8fafc;
+            --text-sub: #94a3b8;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', sans-serif;
         }
 
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-            line-height: 1.6;
+            background-color: var(--bg-body);
+            background-image: radial-gradient(circle at 50% 0%, #1e293b 0%, var(--bg-body) 70%);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 24px;
         }
 
-        /* Cabeçalho / Hero Section */
+        /* Hero Section */
         header {
-            padding: 60px 0 40px;
+            padding: 80px 0 50px;
             text-align: center;
         }
 
+        .badge {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 20px;
+            background-color: rgba(56, 189, 248, 0.1);
+            color: var(--primary-blue);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
         .logo {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             font-weight: 800;
             letter-spacing: -1px;
-            color: var(--text-light);
-            margin-bottom: 10px;
+            margin-bottom: 16px;
         }
 
         .logo span {
-            color: var(--accent-green);
+            color: var(--primary-blue);
         }
 
         h1 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1.2;
             margin-bottom: 20px;
-            font-weight: 700;
+            background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         p.subtitle {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            max-width: 700px;
-            margin: 0 auto 30px;
+            font-size: 1.15rem;
+            color: var(--text-sub);
+            max-width: 650px;
+            margin: 0 auto 36px;
+            font-weight: 400;
         }
 
-        /* Botão Principal CTA */
+        /* Botão CTA */
         .btn-whatsapp {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            background-color: var(--accent-green);
-            color: #fff;
-            font-size: 1.2rem;
-            font-weight: bold;
-            padding: 16px 32px;
+            justify-content: center;
+            gap: 12px;
+            background-color: var(--whatsapp-green);
+            color: #ffffff;
+            font-size: 1.1rem;
+            font-weight: 700;
+            padding: 18px 38px;
             border-radius: 50px;
             text-decoration: none;
-            transition: transform 0.2s, background-color 0.2s;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px -5px rgba(37, 211, 102, 0.4);
         }
 
         .btn-whatsapp:hover {
-            background-color: var(--accent-green-hover);
+            background-color: var(--whatsapp-hover);
             transform: translateY(-3px);
+            box-shadow: 0 15px 30px -5px rgba(37, 211, 102, 0.5);
         }
 
-        /* Seção de Serviços */
+        /* Cards de Serviços */
         .services {
-            padding: 60px 0;
+            padding: 40px 0 80px;
         }
 
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
+            gap: 24px;
+            margin-top: 30px;
         }
 
         .card {
-            background-color: var(--card-bg);
-            padding: 30px;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: transform 0.2s;
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            padding: 32px;
+            border-radius: 16px;
+            border: 1px solid var(--border-card);
+            transition: all 0.3s ease;
         }
 
         .card:hover {
+            border-color: rgba(56, 189, 248, 0.3);
             transform: translateY(-5px);
         }
 
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 16px;
+            display: inline-block;
+        }
+
         .card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            color: var(--accent-green);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--text-main);
         }
 
         .card p {
-            color: var(--text-muted);
+            color: var(--text-sub);
             font-size: 0.95rem;
+            line-height: 1.6;
         }
 
-        /* Rodapé e Cobertura */
+        /* Rodapé */
         footer {
+            border-top: 1px solid var(--border-card);
+            padding: 32px 0;
             text-align: center;
-            padding: 40px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--text-muted);
+            color: var(--text-sub);
             font-size: 0.9rem;
+            background-color: rgba(11, 15, 25, 0.8);
         }
 
-        /* Responsividade para Celulares */
+        footer strong {
+            color: var(--text-main);
+        }
+
+        /* Responsividade Celular */
         @media (max-width: 768px) {
-            h1 { font-size: 1.8rem; }
+            h1 { font-size: 2rem; }
             p.subtitle { font-size: 1rem; }
-            .btn-whatsapp { font-size: 1rem; width: 100%; justify-content: center; }
+            .btn-whatsapp { width: 100%; }
+            header { padding: 50px 0 30px; }
         }
     </style>
 </head>
 <body>
 
     <header class="container">
+        <div class="badge">Consultoria & Presença Digital</div>
         <div class="logo">TECH<span>LELIS</span></div>
-        <h1>Criamos o seu site com dinamismo e alta conversão</h1>
-        <p class="subtitle">Aumente as vendas da sua empresa com um site rápido, moderno e totalmente integrado ao seu WhatsApp e QR Code exclusivo.</p>
+        <h1>Criamos o seu site com dinamismo e movimento</h1>
+        <p class="subtitle">Desenvolvemos sites modernos com integração direta ao seu WhatsApp e QR Code exclusivo para o seu negócio não perder nenhuma venda.</p>
         
         <a href="https://wa.me/5511916650753?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." class="btn-whatsapp" target="_blank">
-            💬 Pedir meu site no WhatsApp
+            💬 Solicitar Orçamento no WhatsApp
         </a>
     </header>
 
     <section class="services container">
-        <h2 style="text-align: center; font-size: 2rem;">O que oferecemos para o seu negócio</h2>
         <div class="grid">
             <div class="card">
-                <h3>🌐 Criação de Sites</h3>
-                <p>Desenvolvemos seu site com visual moderno, rápido e com a personalidade da sua marca para passar autoridade total.</p>
+                <span class="card-icon">💻</span>
+                <h3>Criação de Sites</h3>
+                <p>Desenvolvimento moderno, rápido e com a personalidade da sua marca para passar autoridade total aos seus clientes.</p>
             </div>
             <div class="card">
-                <h3>📱 Conexão WhatsApp & QR Code</h3>
-                <p>Sites com integração direta ao seu WhatsApp e QR Code exclusivo para você não perder nenhuma oportunidade de venda.</p>
+                <span class="card-icon">📲</span>
+                <h3>QR Code & WhatsApp</h3>
+                <p>Integração direta com seu número de atendimento para facilitar o contato imediato sem burocracia.</p>
             </div>
             <div class="card">
-                <h3>🚀 Presença Online</h3>
-                <p>Estratégia e direcionamento para colocar sua empresa com destaque nas buscas da sua região.</p>
+                <span class="card-icon">🚀</span>
+                <h3>Presença Online</h3>
+                <p>Posicionamos sua empresa em destaque nas buscas para atrair novos clientes na sua região.</p>
             </div>
         </div>
     </section>
@@ -172,7 +220,7 @@
         <div class="container">
             <p><strong>Techlelis - Consultoria Online</strong></p>
             <p>Atendimento online para São Paulo (Barra Funda, Brás), Manaus e todo o Brasil.</p>
-            <p style="margin-top: 10px;">Contato: (11) 91665-0753</p>
+            <p style="margin-top: 8px;">Contato: (11) 91665-0753</p>
         </div>
     </footer>
 
