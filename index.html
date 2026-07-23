@@ -3,224 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Techlelis | Criação de Sites e Consultoria Online</title>
+    <title>Techlelis | Criação de Sites Profissionais e Consultoria</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg-body: #0b0f19;
+            --bg-dark: #0b0f19;
             --bg-card: rgba(30, 41, 59, 0.7);
-            --border-card: rgba(255, 255, 255, 0.08);
-            --primary-blue: #38bdf8;
-            --whatsapp-green: #25D366;
+            --border: rgba(255, 255, 255, 0.08);
+            --blue: #38bdf8;
+            --whatsapp: #25D366;
             --whatsapp-hover: #1eb855;
-            --text-main: #f8fafc;
-            --text-sub: #94a3b8;
+            --text: #f8fafc;
+            --text-muted: #94a3b8;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background: var(--bg-dark); color: var(--text); line-height: 1.6; }
+        .container { max-width: 1050px; margin: 0 auto; padding: 0 20px; }
 
-        body {
-            background-color: var(--bg-body);
-            background-image: radial-gradient(circle at 50% 0%, #1e293b 0%, var(--bg-body) 70%);
-            color: var(--text-main);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
+        /* Header / Hero */
+        header { padding: 70px 0 40px; text-align: center; }
+        .badge { display: inline-block; padding: 6px 16px; border-radius: 20px; background: rgba(56, 189, 248, 0.1); color: var(--blue); font-size: 0.85rem; font-weight: 600; margin-bottom: 20px; border: 1px solid rgba(56, 189, 248, 0.2); }
+        .logo { font-size: 2.5rem; font-weight: 800; margin-bottom: 15px; }
+        .logo span { color: var(--blue); }
+        h1 { font-size: 2.8rem; font-weight: 800; line-height: 1.2; margin-bottom: 20px; background: linear-gradient(180deg, #fff 0%, #cbd5e1 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        p.subtitle { font-size: 1.15rem; color: var(--text-muted); max-width: 650px; margin: 0 auto 30px; }
 
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
+        /* Buttons */
+        .btn-whatsapp { display: inline-flex; align-items: center; gap: 10px; background: var(--whatsapp); color: #fff; font-size: 1.1rem; font-weight: 700; padding: 16px 36px; border-radius: 50px; text-decoration: none; transition: 0.3s; box-shadow: 0 10px 25px -5px rgba(37, 211, 102, 0.4); }
+        .btn-whatsapp:hover { background: var(--whatsapp-hover); transform: translateY(-2px); }
 
-        /* Hero Section */
-        header {
-            padding: 80px 0 50px;
-            text-align: center;
-        }
+        /* Botão Flutuante */
+        .float-whatsapp { position: fixed; bottom: 20px; right: 20px; background: var(--whatsapp); color: #fff; width: 60px; height: 60px; border-radius: 50px; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); z-index: 1000; text-decoration: none; transition: 0.3s; }
+        .float-whatsapp:hover { transform: scale(1.1); }
 
-        .badge {
-            display: inline-block;
-            padding: 6px 16px;
-            border-radius: 20px;
-            background-color: rgba(56, 189, 248, 0.1);
-            color: var(--primary-blue);
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 24px;
-            border: 1px solid rgba(56, 189, 248, 0.2);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+        /* Seções */
+        section { padding: 50px 0; }
+        .section-title { text-align: center; font-size: 2rem; margin-bottom: 40px; }
+        
+        /* Grid de Planos */
+        .plans-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .plan-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 35px; position: relative; transition: 0.3s; }
+        .plan-card.featured { border-color: var(--blue); box-shadow: 0 0 25px rgba(56, 189, 248, 0.15); }
+        .plan-card h3 { font-size: 1.5rem; margin-bottom: 10px; }
+        .plan-price { font-size: 2rem; font-weight: 800; color: var(--blue); margin-bottom: 20px; }
+        .plan-features { list-style: none; margin-bottom: 30px; }
+        .plan-features li { margin-bottom: 12px; color: var(--text-muted); font-size: 0.95rem; }
+        .plan-features li::before { content: "✓ "; color: var(--whatsapp); font-weight: bold; }
 
-        .logo {
-            font-size: 2.5rem;
-            font-weight: 800;
-            letter-spacing: -1px;
-            margin-bottom: 16px;
-        }
+        /* Footer */
+        footer { border-top: 1px solid var(--border); padding: 40px 0; text-align: center; color: var(--text-muted); font-size: 0.9rem; margin-top: 40px; }
 
-        .logo span {
-            color: var(--primary-blue);
-        }
-
-        h1 {
-            font-size: 2.8rem;
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 20px;
-            background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        p.subtitle {
-            font-size: 1.15rem;
-            color: var(--text-sub);
-            max-width: 650px;
-            margin: 0 auto 36px;
-            font-weight: 400;
-        }
-
-        /* Botão CTA */
-        .btn-whatsapp {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            background-color: var(--whatsapp-green);
-            color: #ffffff;
-            font-size: 1.1rem;
-            font-weight: 700;
-            padding: 18px 38px;
-            border-radius: 50px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 25px -5px rgba(37, 211, 102, 0.4);
-        }
-
-        .btn-whatsapp:hover {
-            background-color: var(--whatsapp-hover);
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px -5px rgba(37, 211, 102, 0.5);
-        }
-
-        /* Cards de Serviços */
-        .services {
-            padding: 40px 0 80px;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-            margin-top: 30px;
-        }
-
-        .card {
-            background: var(--bg-card);
-            backdrop-filter: blur(10px);
-            padding: 32px;
-            border-radius: 16px;
-            border: 1px solid var(--border-card);
-            transition: all 0.3s ease;
-        }
-
-        .card:hover {
-            border-color: rgba(56, 189, 248, 0.3);
-            transform: translateY(-5px);
-        }
-
-        .card-icon {
-            font-size: 2rem;
-            margin-bottom: 16px;
-            display: inline-block;
-        }
-
-        .card h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 12px;
-            color: var(--text-main);
-        }
-
-        .card p {
-            color: var(--text-sub);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        /* Rodapé */
-        footer {
-            border-top: 1px solid var(--border-card);
-            padding: 32px 0;
-            text-align: center;
-            color: var(--text-sub);
-            font-size: 0.9rem;
-            background-color: rgba(11, 15, 25, 0.8);
-        }
-
-        footer strong {
-            color: var(--text-main);
-        }
-
-        /* Responsividade Celular */
         @media (max-width: 768px) {
             h1 { font-size: 2rem; }
-            p.subtitle { font-size: 1rem; }
-            .btn-whatsapp { width: 100%; }
-            header { padding: 50px 0 30px; }
+            .btn-whatsapp { width: 100%; justify-content: center; }
         }
     </style>
 </head>
 <body>
 
+    <a href="https://wa.me/5511916650753?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20criar%20meu%20site." class="float-whatsapp" target="_blank" title="Fale no WhatsApp">
+        💬
+    </a>
+
     <header class="container">
-        <div class="badge">Consultoria & Presença Digital</div>
+        <div class="badge">Sua Empresa de Cara Nova na Internet</div>
         <div class="logo">TECH<span>LELIS</span></div>
-        <h1>Criamos o seu site com dinamismo e movimento</h1>
-        <p class="subtitle">Desenvolvemos sites modernos com integração direta ao seu WhatsApp e QR Code exclusivo para o seu negócio não perder nenhuma venda.</p>
+        <h1>Criamos o seu site profissional com alta taxa de conversão</h1>
+        <p class="subtitle">Sites modernos, ultra-rápidos, com QR Code exclusivo e botão direto para o seu WhatsApp. Comece a receber mais clientes hoje mesmo.</p>
         
-        <a href="https://wa.me/5511916650753?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." class="btn-whatsapp" target="_blank">
-            💬 Solicitar Orçamento no WhatsApp
+        <a href="https://wa.me/5511916650753?text=Ol%C3%A1!%20Quero%20solicitar%20um%20or%C3%A7amento." class="btn-whatsapp" target="_blank">
+            💬 Solicitar Orçamento sem Compromisso
         </a>
     </header>
 
-    <section class="services container">
-        <div class="grid">
-            <div class="card">
-                <span class="card-icon">💻</span>
-                <h3>Criação de Sites</h3>
-                <p>Desenvolvimento moderno, rápido e com a personalidade da sua marca para passar autoridade total aos seus clientes.</p>
+    <section class="container">
+        <h2 class="section-title">Soluções sob medida para o seu negócio</h2>
+        <div class="plans-grid">
+            <div class="plan-card">
+                <h3>Landing Page Express</h3>
+                <div class="plan-price">Alta Conversão</div>
+                <ul class="plan-features">
+                    <li>Página única focada em vendas</li>
+                    <li>Integração com WhatsApp</li>
+                    <li>QR Code personalizado</li>
+                    <li>Design 100% responsivo (Celular)</li>
+                    <li>Entrega rápida em poucos dias</li>
+                </ul>
+                <a href="https://wa.me/5511916650753?text=Quero%20saber%20mais%20sobre%20a%20Landing%20Page%20Express" class="btn-whatsapp" style="width: 100%; justify-content: center;" target="_blank">Escolher este</a>
             </div>
-            <div class="card">
-                <span class="card-icon">📲</span>
-                <h3>QR Code & WhatsApp</h3>
-                <p>Integração direta com seu número de atendimento para facilitar o contato imediato sem burocracia.</p>
-            </div>
-            <div class="card">
-                <span class="card-icon">🚀</span>
-                <h3>Presença Online</h3>
-                <p>Posicionamos sua empresa em destaque nas buscas para atrair novos clientes na sua região.</p>
+
+            <div class="plan-card featured">
+                <h3>Site Institucional</h3>
+                <div class="plan-price">Presença Completa</div>
+                <ul class="plan-features">
+                    <li>Múltiplas páginas (Início, Sobre, Serviços)</li>
+                    <li>Otimização para busca no Google (SEO)</li>
+                    <li>Integração com WhatsApp e redes sociais</li>
+                    <li>QR Code + Cartão Digital</li>
+                    <li>Acompanhamento e consultoria online</li>
+                </ul>
+                <a href="https://wa.me/5511916650753?text=Quero%20saber%20mais%20sobre%20o%20Site%20Institucional" class="btn-whatsapp" style="width: 100%; justify-content: center;" target="_blank">Escolher este</a>
             </div>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <p><strong>Techlelis - Consultoria Online</strong></p>
-            <p>Atendimento online para São Paulo (Barra Funda, Brás), Manaus e todo o Brasil.</p>
-            <p style="margin-top: 8px;">Contato: (11) 91665-0753</p>
+            <p><strong>Techlelis - Consultoria Online & Criação de Sites</strong></p>
+            <p>Atendimento para São Paulo (Barra Funda, Brás), Manaus e todo o Brasil.</p>
+            <p style="margin-top: 10px;">Contato: (11) 91665-0753 | techlelis.com.br</p>
         </div>
     </footer>
 
