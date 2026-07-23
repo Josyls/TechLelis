@@ -3,160 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Techlelis | Ecossistema Digital, IA & Automações</title>
+    <title>Techlelis | Criação de Sites, IA & Automação</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     
     <style>
         :root {
             --bg-dark: #080c14;
-            --bg-card: rgba(15, 23, 42, 0.75);
+            --bg-card: rgba(15, 23, 42, 0.85);
             --border-card: rgba(255, 255, 255, 0.08);
             --blue-accent: #38bdf8;
-            --purple-accent: #818cf8;
             --green-whatsapp: #25D366;
-            --green-hover: #1ebd59;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
+        body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; }
 
-        /* Navegação Superior */
-        nav { border-bottom: 1px solid var(--border-card); padding: 18px 0; background: rgba(8, 12, 20, 0.8); backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 100; }
-        .nav-container { max-width: 1150px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.6rem; font-weight: 800; color: #fff; text-decoration: none; letter-spacing: -0.5px; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+        /* Header */
+        header { padding: 60px 0 40px; text-align: center; }
+        .logo { font-size: 2.2rem; font-weight: 800; color: #fff; margin-bottom: 12px; }
         .logo span { color: var(--blue-accent); }
-        .nav-cta { background: var(--blue-accent); color: #080c14; font-weight: 700; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-size: 0.9rem; transition: 0.2s; }
-        .nav-cta:hover { opacity: 0.9; transform: translateY(-1px); }
+        h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 16px; background: linear-gradient(180deg, #fff 0%, #cbd5e1 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        p.sub { color: var(--text-muted); max-width: 650px; margin: 0 auto 24px; font-size: 1.1rem; }
 
-        /* Hero Section (Estilo RD Station) */
-        .hero { padding: 80px 0 60px; position: relative; }
-        .hero-container { max-width: 1150px; margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: center; }
-        .badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: 20px; background: rgba(56, 189, 248, 0.1); color: var(--blue-accent); font-size: 0.85rem; font-weight: 600; border: 1px solid rgba(56, 189, 248, 0.2); margin-bottom: 20px; }
-        h1 { font-size: 3rem; font-weight: 800; line-height: 1.15; margin-bottom: 20px; background: linear-gradient(180deg, #FFFFFF 0%, #94A3B8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        p.hero-sub { font-size: 1.15rem; color: var(--text-muted); margin-bottom: 32px; font-weight: 400; }
+        /* Estilo do Carrossel */
+        .carousel-section { padding: 40px 0 60px; }
+        .carousel-container { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 20px; }
+        .carousel-container::-webkit-scrollbar { height: 8px; }
+        .carousel-container::-webkit-scrollbar-thumb { background: rgba(56, 189, 248, 0.3); border-radius: 4px; }
+        
+        .carousel-card { flex: 0 0 320px; scroll-snap-align: start; background: var(--bg-card); border: 1px solid var(--border-card); border-radius: 16px; overflow: hidden; transition: transform 0.3s; }
+        .carousel-card:hover { transform: translateY(-4px); border-color: rgba(56, 189, 248, 0.3); }
+        .carousel-img { width: 100%; height: 180px; object-fit: cover; background: #1e293b; }
+        .card-body { padding: 20px; }
+        .card-body h3 { font-size: 1.2rem; margin-bottom: 8px; color: #fff; }
+        .card-body p { font-size: 0.9rem; color: var(--text-muted); }
 
-        /* Card do Formulário Direto na Hero */
-        .hero-form-card { background: var(--bg-card); border: 1px solid var(--border-card); border-radius: 16px; padding: 32px; backdrop-filter: blur(16px); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
-        .hero-form-card h3 { font-size: 1.3rem; margin-bottom: 8px; }
-        .hero-form-card p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px; }
-        .btn-whatsapp-large { display: flex; align-items: center; justify-content: center; gap: 10px; background: var(--green-whatsapp); color: #fff; font-weight: 700; font-size: 1.05rem; padding: 16px; border-radius: 10px; text-decoration: none; transition: 0.3s; box-shadow: 0 10px 25px -5px rgba(37, 211, 102, 0.3); }
-        .btn-whatsapp-large:hover { background: var(--green-hover); transform: translateY(-2px); }
-
-        /* Barra de Marcas / Prova Social */
-        .social-proof { border-y: 1px solid var(--border-card); padding: 24px 0; background: rgba(15, 23, 42, 0.3); text-align: center; }
-        .social-proof p { font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 12px; }
-        .regions-list { display: flex; justify-content: center; gap: 30px; font-weight: 600; color: #cbd5e1; font-size: 0.95rem; }
-
-        /* Módulos de Soluções */
-        .solutions { padding: 80px 0; }
-        .section-header { text-align: center; max-width: 700px; margin: 0 auto 50px; }
-        .section-header h2 { font-size: 2.2rem; font-weight: 800; margin-bottom: 12px; }
-        .section-header p { color: var(--text-muted); }
-
-        .grid-solutions { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
-        .solution-card { background: var(--bg-card); border: 1px solid var(--border-card); border-radius: 14px; padding: 28px; transition: 0.3s; position: relative; }
-        .solution-card:hover { border-color: rgba(56, 189, 248, 0.4); transform: translateY(-4px); }
-        .card-tag { display: inline-block; font-size: 0.75rem; font-weight: 700; color: var(--purple-accent); text-transform: uppercase; margin-bottom: 12px; }
-        .solution-card h3 { font-size: 1.25rem; margin-bottom: 10px; }
-        .solution-card p { font-size: 0.9rem; color: var(--text-muted); }
-
-        /* Botão Flutuante */
-        .float-whatsapp { position: fixed; bottom: 20px; right: 20px; background: var(--green-whatsapp); color: #fff; width: 60px; height: 60px; border-radius: 50px; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); z-index: 1000; text-decoration: none; transition: 0.3s; }
-        .float-whatsapp:hover { transform: scale(1.1); }
-
-        /* Rodapé */
-        footer { border-top: 1px solid var(--border-card); padding: 40px 0; text-align: center; color: var(--text-muted); font-size: 0.85rem; }
-
-        @media (max-width: 868px) {
-            .hero-container { grid-template-columns: 1fr; text-align: center; }
-            h1 { font-size: 2.2rem; }
-            .regions-list { flex-direction: column; gap: 8px; }
-        }
+        /* CTA */
+        .btn-whatsapp { display: inline-flex; align-items: center; gap: 10px; background: var(--green-whatsapp); color: #fff; font-weight: 700; padding: 14px 32px; border-radius: 50px; text-decoration: none; margin-top: 20px; }
+        
+        footer { border-top: 1px solid var(--border-card); text-align: center; padding: 30px 0; color: var(--text-muted); font-size: 0.85rem; }
     </style>
 </head>
 <body>
 
-    <a href="https://wa.me/5511916650753?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20uma%20consultoria." class="float-whatsapp" target="_blank" title="Fale com a Techlelis">
-        💬
-    </a>
+    <header class="container">
+        <div class="logo">TECH<span>LELIS</span></div>
+        <h1>Consultoria Online & Criação de Sites</h1>
+        <p class="sub">Serviços com movimento e personalidade para destacar o seu negócio na internet.</p>
+        <a href="https://wa.me/5511916650753?text=Ol%C3%A1!%20Vim%20pelo%20site." class="btn-whatsapp" target="_blank">
+            💬 Falar no WhatsApp: (11) 91665-0753
+        </a>
+    </header>
 
-    <nav>
-        <div class="nav-container">
-            <a href="#" class="logo">TECH<span>LELIS</span></a>
-            <a href="https://wa.me/5511916650753?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento." class="nav-cta" target="_blank">Falar com Consultor</a>
-        </div>
-    </nav>
-
-    <section class="hero">
-        <div class="hero-container">
-            <div>
-                <div class="badge">⚡ Ecossistema Completo de Tecnologia</div>
-                <h1>Crie seu site, automatize vendas e escale com IA</h1>
-                <p class="hero-sub">Desenvolvemos plataformas modernas de alta conversão, agentes inteligentes para WhatsApp e dashboards em tempo real para o seu negócio vender mais.</p>
-            </div>
-
-            <div class="hero-form-card">
-                <h3>Solicite uma Proposta</h3>
-                <p>Receba um diagnóstico gratuito da sua presença digital em poucos minutos.</p>
-                <a href="https://wa.me/5511916650753?text=Ol%C3%A1!%20Quero%20receber%20um%20diagn%C3%B3stico%20gratuito%20da%20Techlelis." class="btn-whatsapp-large" target="_blank">
-                    💬 Iniciar Atendimento via WhatsApp
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <div class="social-proof">
-        <p>Atendimento Online de Alta Performance para Empresas em</p>
-        <div class="regions-list">
-            <span>📍 São Paulo (Barra Funda)</span>
-            <span>📍 Brás</span>
-            <span>📍 Manaus</span>
-            <span>📍 Atendimento em Todo o Brasil</span>
-        </div>
-    </div>
-
-    <section class="solutions">
-        <div class="nav-container">
-            <div class="section-header">
-                <h2>Soluções completas para cada etapa da sua empresa</h2>
-                <p>Do site de alta performance à inteligência artificial integrada ao seu atendimento.</p>
-            </div>
-
-            <div class="grid-solutions">
-                <div class="solution-card">
-                    <span class="card-tag">Alta Conversão</span>
+    <section class="container carousel-section">
+        <h2 style="margin-bottom: 24px; font-size: 1.8rem;">Conheça Nossos Serviços</h2>
+        
+        <div class="carousel-container">
+            <div class="carousel-card">
+                <img src="http://googleusercontent.com/image_generation_content/1" class="carousel-img" alt="Criação de Sites">
+                <div class="card-body">
                     <h3>Criação de Sites</h3>
-                    <p>Landing pages e sites institucionais ultra-rápidos, responsivos e otimizados para o Google.</p>
+                    <p>Desenvolvimento moderno, responsivo e com QR Code exclusivo integrado ao seu WhatsApp.</p>
                 </div>
+            </div>
 
-                <div class="solution-card">
-                    <span class="card-tag">Atendimento 24/7</span>
-                    <h3>Agentes de IA</h3>
-                    <p>Assistentes virtuais treinados para qualificar clientes e agendar reuniões no seu WhatsApp.</p>
+            <div class="carousel-card">
+                <img src="http://googleusercontent.com/image_generation_content/0" class="carousel-img" alt="Agentes de IA">
+                <div class="card-body">
+                    <h3>Agentes de IA & Atendimento</h3>
+                    <p>Assistentes inteligentes 24/7 para qualificar clientes e responder dúvidas automaticamente.</p>
                 </div>
+            </div>
 
-                <div class="solution-card">
-                    <span class="card-tag">Eficiência</span>
-                    <h3>Automação de Processos</h3>
-                    <p>Conexão total entre planilhas, e-mails, WhatsApp e CRMs para eliminar trabalho manual.</p>
+            <div class="carousel-card">
+                <div class="carousel-img" style="display:flex;align-items:center;justify-content:center;font-size:3rem;">📊</div>
+                <div class="card-body">
+                    <h3>Dashboards & Automação</h3>
+                    <p>Painéis de gestão de dados e processos automáticos para economizar o seu tempo.</p>
                 </div>
+            </div>
 
-                <div class="solution-card">
-                    <span class="card-tag">Tomada de Decisão</span>
-                    <h3>Dashboards Interativos</h3>
-                    <p>Painéis visuais claros para acompanhar vendas e métricas financeiras em tempo real.</p>
+            <div class="carousel-card">
+                <div class="carousel-img" style="display:flex;align-items:center;justify-content:center;font-size:3rem;">🚀</div>
+                <div class="card-body">
+                    <h3>Presença Digital</h3>
+                    <p>Posicionamento estratégico para atrair novos clientes em São Paulo, Brás e Manaus.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <footer>
-        <p><strong>Techlelis - Consultoria Online</strong> | techlelis.com.br</p>
-        <p style="margin-top: 6px;">Atendimento Comercial: (11) 91665-0753</p>
+        <p><strong>Techlelis - Consultoria Online</strong> | Avenida Auro Soares de Moura Andrade, Barra Funda - São Paulo - SP</p>
     </footer>
 
 </body>
